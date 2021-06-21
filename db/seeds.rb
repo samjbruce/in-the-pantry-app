@@ -5,26 +5,26 @@
 # ])
 
 
-# Ingredient.create!([
-#   {name: "apple", user_id: 1, have: true},
-#   {name: "chicken", user_id: 1, have: true},
-#   {name: "bagels", user_id: 3, have: false},
-#   {name: "sugar", user_id: 2, have: true},
-#   {name: "sausage", user_id: 2, have: false},
-#   {name: "corn", user_id: 1, have: false},
-#   {name: "garlic", user_id: 3, have: true},
-#   {name: "butter", user_id: 2, have: false},
-#   {name: "walnuts", user_id: 3, have: true},
-#   {name: "bacon", user_id: 1, have: true},
-#   {name: "lemons", user_id: 3, have: false},
-# ])
-
-Favorite.create!([
-  {spoonacular_api_id: 602643, user_id: 2},
-  {spoonacular_api_id: 1515523, user_id: 1},
-  {spoonacular_api_id: 641901, user_id: 3},
-  {spoonacular_api_id: 715525, user_id: 2},
-  {spoonacular_api_id: 800780, user_id: 1},
-  {spoonacular_api_id: 649643, user_id: 1}
-
+Ingredient.create!([
+  {name: "apple", user_id: 4, have: true},
+  {name: "chicken", user_id: 4, have: true},
+  {name: "bagels", user_id: 6, have: false},
+  {name: "sugar", user_id: 5, have: true},
+  {name: "sausage", user_id: 5, have: false},
+  {name: "corn", user_id: 4, have: false},
+  {name: "garlic", user_id: 6, have: true},
+  {name: "butter", user_id: 5, have: false},
+  {name: "walnuts", user_id: 6, have: true},
+  {name: "bacon", user_id: 4, have: true},
+  {name: "lemons", user_id: 6, have: false},
 ])
+
+# Favorite.create!([
+#   {spoonacular_api_id: 602643, user_id: 4},
+#   {spoonacular_api_id: 1515523, user_id: 6},
+#   {spoonacular_api_id: 641901, user_id: 5},
+#   {spoonacular_api_id: 715525, user_id: 4},
+#   {spoonacular_api_id: 800780, user_id: 4},
+#   {spoonacular_api_id: 649643, user_id: 6}
+
+# ])
