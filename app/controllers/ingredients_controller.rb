@@ -22,20 +22,28 @@ class IngredientsController < ApplicationController
 
   def update
     ingredient = Ingredient.find(params[:id])
-    ingredient.have = params[:have] || ingredient.have
-    if ingredient.save
-      render json: { message: "Ingredient successfully updated" }, 
-      status: :ok
+    if current_user == ingredient.user
+      ingredient.have = params[:have] || ingredient.have
+      if ingredient.save
+        render json: { message: "Ingredient successfully updated" }, 
+        status: :ok
+      else
+        render json: { errors: ingredient.errors.full_messages },
+        status: :bad_request
+      end
     else
-      render json: { errors: ingredient.errors.full_messages },
-      status: :bad_request
+      render json: { errors: "Unauthorized" }, status: :unauthorized 
     end
   end
 
   def destroy
     ingredient = Ingredient.find(params[:id])
-    ingredient.delete
-    render json: { message: "Ingredient Deleted" }
+    if current_user == ingredient.user
+      ingredient.delete
+      render json: { message: "Ingredient Deleted" }
+    else
+      render json: { errors: "Unauthorized" }, status: :unauthorized 
+    end
   end
 
 end

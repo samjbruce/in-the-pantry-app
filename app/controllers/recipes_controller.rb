@@ -17,9 +17,7 @@ class RecipesController < ApplicationController
         recipe_id: recipe["id"],
         title: recipe["title"],
         image_url: recipe["image"],
-        used_ingredients: recipe["usedIngredients"].map do |ingredient|
-          ingredient["name"]
-        end
+        used_ingredients: recipe["usedIngredients"].map { |ingredient| ingredient["name"] }.uniq
       }
     end
 

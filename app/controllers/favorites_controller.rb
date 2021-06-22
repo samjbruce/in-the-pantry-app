@@ -19,10 +19,16 @@ class FavoritesController < ApplicationController
     end
   end
 
+  ## Destory Path not authorizing correctly
+
   def destroy
     favorite = Favorite.find(params[:id])
-    favorite.delete
-    render json: { message: "Unfavorited" }
+    if current_user == favorite.user
+      favorite.delete
+      render json: { message: "unfavorited" }
+    else
+      render json: { errors: "unauthorized" }, status: :unauthorized
+    end
   end
 
 end
