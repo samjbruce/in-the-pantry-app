@@ -32,4 +32,10 @@ class IngredientsController < ApplicationController
     end
   end
 
+  def destroy
+    ingredient = Ingredient.find(params[:id])
+    ingredient.delete
+    render json: { message: "Ingredient Deleted" }
+  end
+
 end

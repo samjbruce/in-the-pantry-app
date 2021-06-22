@@ -14,5 +14,9 @@ Rails.application.routes.draw do
   get "/ingredients" => "ingredients#index"
   post "/ingredients" => "ingredients#create"
   patch "/ingredients/:id" => "ingredients#update"
+  delete "/ingredients/:id" => "ingredients#destroy"
+
+  get "/recipes" => "recipes#index"
+  get "/recipes/:spoonacular_api_id" => "recipes#show"
 
 end

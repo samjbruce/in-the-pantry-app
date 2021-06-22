@@ -7,9 +7,10 @@ class Favorite < ApplicationRecord
     response = HTTP.get("https://api.spoonacular.com/recipes/#{spoonacular_api_id}/information?apiKey=#{Rails.application.credentials.spoonacular_api_key}")
     api_recipe_object = response.parse(:json)
     return {
+      recipe_id: api_recipe_object["id"],
       title: api_recipe_object["title"],
       prep_time_minutes: api_recipe_object["readyInMinutes"],
-      image_url: api_recipe_object["image"]
+      image_url: api_recipe_object["image"],
     }
   end
 
