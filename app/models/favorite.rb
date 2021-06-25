@@ -1,7 +1,7 @@
 class Favorite < ApplicationRecord
 
   belongs_to :user
-  validates :spoonacular_api_id, presence: true, uniqueness: true
+  validates :spoonacular_api_id, presence: true
 
   def recipe
     response = HTTP.get("https://api.spoonacular.com/recipes/#{spoonacular_api_id}/information?apiKey=#{Rails.application.credentials.spoonacular_api_key}")
