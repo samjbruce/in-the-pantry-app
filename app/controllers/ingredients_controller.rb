@@ -1,5 +1,7 @@
 class IngredientsController < ApplicationController
 
+  before_action :authenticate_user
+
   def index
     ingredients = current_user.ingredients
     render json: ingredients
@@ -22,27 +24,26 @@ class IngredientsController < ApplicationController
 
   def update
     ingredient = Ingredient.find(params[:id])
-    if current_user == ingredient.user
-      ingredient.have = params[:have] || ingredient.have
+    if ingredient.user_id == current_user.id
+      ingredient.have = !ingredient.have
       if ingredient.save
-        render json: { message: "Ingredient successfully updated" }, 
-        status: :ok
+        render json: ingredient
       else
         render json: { errors: ingredient.errors.full_messages },
         status: :bad_request
       end
     else
-      render json: { errors: "Unauthorized" }, status: :unauthorized 
+      render json: {}, status: :unauthorized
     end
   end
 
   def destroy
     ingredient = Ingredient.find(params[:id])
-    if current_user == ingredient.user
+    if ingredient.user_id == current_user.id
       ingredient.delete
       render json: { message: "Ingredient Deleted" }
     else
-      render json: { errors: "Unauthorized" }, status: :unauthorized 
+      render json: {}, status: :unauthorized
     end
   end
 

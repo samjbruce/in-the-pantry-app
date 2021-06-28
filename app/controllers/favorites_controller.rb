@@ -1,5 +1,7 @@
 class FavoritesController < ApplicationController
 
+  before_action :authenticate_user
+
   def index
     favorites = current_user.favorites
     render json: favorites
@@ -11,7 +13,7 @@ class FavoritesController < ApplicationController
       spoonacular_api_id: params[:spoonacular_api_id]
     )
     if favorite.save
-      render json: { message: favorite },
+      render json: favorite,
       status: :created
     else
       render json: { errors: favorite.errors.full_messages },
@@ -19,15 +21,13 @@ class FavoritesController < ApplicationController
     end
   end
 
-  ## Destory Path not authorizing correctly
-
   def destroy
     favorite = Favorite.find(params[:id])
-    if current_user == favorite.user
+    if current_user.id == favorite.user_id
       favorite.delete
-      render json: { message: "unfavorited" }
+      render json: { message: "favorite deleted" }
     else
-      render json: { errors: "unauthorized" }, status: :unauthorized
+      render json: {}, status: :unauthorized
     end
   end
 

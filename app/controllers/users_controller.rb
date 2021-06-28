@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :authenticate_user
+
   def create
     user = User.new(
       name: params[:name],
@@ -17,10 +19,10 @@ class UsersController < ApplicationController
 
   def show
     user = User.find(params[:id])
-    if current_user.id == user.id
+    if user == current_user
       render json: user
     else
-      render json: { errors: "Unauthorized" }, status: :unauthorized
+      render json: {}, status: :unauthorized
     end
   end
 
