@@ -3,6 +3,7 @@ class RecipesController < ApplicationController
   def index
 
     user_ingredients = current_user.ingredients.where( "have = ?", true )
+    # Will include login to toggle whether a user wants to actually cook with certain ingredients or not. A have = false will populate a shopping list page where users can choose which ingredients to keep in the cart
     ingredient_names = []
     user_ingredients.each do |ingredient_name|
       ingredient_names << ingredient_name["name"]
