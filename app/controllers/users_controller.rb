@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       image_url: params[:image_url]
     )
     if user.save
-      render json: { message: "User created successfully" }, status: :created
+      render json: user, status: :created
     else
       render json: { errors: user.errors.full_messages }, status: :bad_request
     end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       user.email = params[:email] || user.email
       user.image_url = params[:image_url] || user.image_url
       if user.save
-        render json: { message: "User successfully updated" },
+        render json: user,
         status: :ok
       else
         render json: { errors: user.errors.full_messages },
