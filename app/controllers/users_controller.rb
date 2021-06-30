@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :authenticate_user
+  before_action :authenticate_user, except: [:create]
 
   def create
     user = User.new(
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def show
     user = User.find(params[:id])
-    if user == current_user
+    if user.id == current_user.id
       render json: user
     else
       render json: {}, status: :unauthorized
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
         status: :bad_request
       end
     else
-      render json: { errors: "Unauthorized" }, status: :unauthorized
+      render json: {}, status: :unauthorized
     end
   end
 
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
       user.destroy
       render json: { message: "User successfully deleted"}
     else
-      render json: { errors: "Unauthorized" }, status: :unauthorized
+      render json: {}, status: :unauthorized
     end
   end
 
