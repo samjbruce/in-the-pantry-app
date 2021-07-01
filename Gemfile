@@ -44,5 +44,3 @@ gem 'seed_dump'
 gem 'jwt'
 
 gem 'http'
-
-gem 'rack-cors'
