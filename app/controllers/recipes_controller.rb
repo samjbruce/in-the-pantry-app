@@ -30,8 +30,21 @@ class RecipesController < ApplicationController
 
     spoonacular_api_id = params[:spoonacular_api_id]
     response = HTTP.get("https://api.spoonacular.com/recipes/#{spoonacular_api_id}/information?apiKey=#{Rails.application.credentials.spoonacular_api_key}")
+
     recipe = response.parse(:json)
-    render json: recipe
+
+    formatted_recipe = {
+      recipe_id: recipe["id"],
+      title: recipe["title"],
+      prep_time: recipe["readyInMinutes"],
+      servings: recipe["servings"],
+      image: recipe["image"],
+      ingredients: recipe["extendedIngredients"].map { |ingredient| ingredient["originalString"]},
+      instructions: recipe["analyzedInstructions"].map do |instruction|
+        instruction["steps"].map { |step| step["step"] }
+      end
+    }
+    render json: formatted_recipe
 
   end
 
