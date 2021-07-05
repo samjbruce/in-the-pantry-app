@@ -27,7 +27,7 @@ class IngredientsController < ApplicationController
     ingredients = current_user.ingredients
     ingredient = Ingredient.find(params[:id])
     if ingredient.user_id == current_user.id
-      # ingredient.have = !ingredient.have
+      ingredient.have = !ingredient.have
       ingredient.cook_with = !ingredient.cook_with
       if ingredient.save
         render json: ingredients
