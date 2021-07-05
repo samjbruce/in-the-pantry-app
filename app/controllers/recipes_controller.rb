@@ -21,7 +21,8 @@ class RecipesController < ApplicationController
       }
     end
 
-    render json: formatted_recipes
+    render json: {recipes: formatted_recipes, ingredient_names: ingredient_names }
+
 
   end
 
