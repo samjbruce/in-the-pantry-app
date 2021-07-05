@@ -2,8 +2,10 @@ class RecipesController < ApplicationController
 
   def index
 
-    user_ingredients = current_user.ingredients.where( "have = ?", true )
+    user_ingredients = current_user.ingredients.where( "cook_with = ?", true )
     # Will include login to toggle whether a user wants to actually cook with certain ingredients or not. A have = false will populate a shopping list page where users can choose which ingredients to keep in the cart
+    # user_ingredients = [watermelon, sugar, lemon]
+    # user_ingredients = params[:cookWith]
     ingredient_names = []
     user_ingredients.each do |ingredient_name|
       ingredient_names << ingredient_name["name"]
@@ -33,6 +35,10 @@ class RecipesController < ApplicationController
 
     recipe = response.parse(:json)
 
+    formatted_instructions =  recipe["analyzedInstructions"].map do |instruction|
+      instruction["steps"].map { |step| step["step"] }
+    end
+
     formatted_recipe = {
       recipe_id: recipe["id"],
       title: recipe["title"],
@@ -40,9 +46,7 @@ class RecipesController < ApplicationController
       servings: recipe["servings"],
       image: recipe["image"],
       ingredients: recipe["extendedIngredients"].map { |ingredient| ingredient["originalString"]},
-      instructions: recipe["analyzedInstructions"].map do |instruction|
-        instruction["steps"].map { |step| step["step"] }
-      end
+      instructions: formatted_instructions[0]
     }
     render json: formatted_recipe
 
