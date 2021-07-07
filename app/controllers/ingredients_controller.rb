@@ -15,7 +15,7 @@ class IngredientsController < ApplicationController
       have: params[:have]
     )
     if ingredient.save
-      render json: ingredients,
+      render json: ingredient,
       status: :created
     else
       render json: { errors: ingredient.errors.full_messages },

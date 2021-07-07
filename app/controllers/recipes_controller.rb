@@ -8,7 +8,7 @@ class RecipesController < ApplicationController
       ingredient_names << ingredient_name["name"]
     end
 
-    response = HTTP.get("https://api.spoonacular.com/recipes/findByIngredients?ingredients=#{ingredient_names[0]},#{ingredient_names[1]},#{ingredient_names[2]},#{ingredient_names[3]}&ignorePantry=false&number=15&apiKey=#{Rails.application.credentials.spoonacular_api_key}")
+    response = HTTP.get("https://api.spoonacular.com/recipes/findByIngredients?ingredients=#{ingredient_names[0]},#{ingredient_names[1]},#{ingredient_names[2]},#{ingredient_names[3]}&ignorePantry=false&number=25&apiKey=#{Rails.application.credentials.spoonacular_api_key}")
 
     recipes = response.parse(:json)
 
