@@ -3,12 +3,16 @@ class RecipesController < ApplicationController
   def index
 
     user_ingredients = current_user.ingredients.where( "cook_with = ?", true )
+    formatted_ingredient_names = []
+    user_ingredients.each do |ingredient_name|
+      formatted_ingredient_names << ingredient_name["name"].gsub(/\s+/, "+")
+    end
     ingredient_names = []
     user_ingredients.each do |ingredient_name|
       ingredient_names << ingredient_name["name"]
     end
 
-    response = HTTP.get("https://api.spoonacular.com/recipes/findByIngredients?ingredients=#{ingredient_names[0]},#{ingredient_names[1]},#{ingredient_names[2]},#{ingredient_names[3]}&ignorePantry=false&number=25&apiKey=#{Rails.application.credentials.spoonacular_api_key}")
+    response = HTTP.get("https://api.spoonacular.com/recipes/findByIngredients?ingredients=#{formatted_ingredient_names[0]},#{formatted_ingredient_names[1]},#{formatted_ingredient_names[2]},#{formatted_ingredient_names[3]}&ignorePantry=false&number=25&apiKey=#{Rails.application.credentials.spoonacular_api_key}")
 
     recipes = response.parse(:json)
 
@@ -22,6 +26,7 @@ class RecipesController < ApplicationController
     end
 
     render json: {recipes: formatted_recipes, ingredient_names: ingredient_names }
+    
 
 
   end
