@@ -22,11 +22,10 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    favorites = current_user.favorites
     favorite = Favorite.find(params[:id])
     if current_user.id == favorite.user_id
       favorite.delete
-      render json: favorites
+      render json: {message: "Destroyed"}
     else
       render json: {}, status: :unauthorized
     end
