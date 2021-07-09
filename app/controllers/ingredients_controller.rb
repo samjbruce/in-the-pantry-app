@@ -10,8 +10,7 @@ class IngredientsController < ApplicationController
   def create
     ingredient = Ingredient.new(
       name: params[:name].capitalize(),
-      user_id: current_user.id,
-      have: params[:have]
+      user_id: current_user.id
     )
     if ingredient.save
       render json: ingredient,
