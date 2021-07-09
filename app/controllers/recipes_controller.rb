@@ -14,7 +14,10 @@ class RecipesController < ApplicationController
 
     response = HTTP.get("https://api.spoonacular.com/recipes/findByIngredients?ingredients=#{formatted_ingredient_names[0]},#{formatted_ingredient_names[1]},#{formatted_ingredient_names[2]},#{formatted_ingredient_names[3]}&ignorePantry=false&number=25&apiKey=#{Rails.application.credentials.spoonacular_api_key}")
 
+    shortened_response = HTTP.get("https://api.spoonacular.com/recipes/findByIngredients?ingredients=#{formatted_ingredient_names[0]},#{formatted_ingredient_names[1]},#{formatted_ingredient_names[2]},#{formatted_ingredient_names[3]}&ignorePantry=false&number=5&apiKey=#{Rails.application.credentials.spoonacular_api_key}")
+
     recipes = response.parse(:json)
+    similar_recipes = shortened_response.parse(:json)
 
     formatted_recipes = recipes.map do |recipe|
       {
@@ -24,8 +27,17 @@ class RecipesController < ApplicationController
         used_ingredients: recipe["usedIngredients"].map { |ingredient| ingredient["name"] }.uniq
       }
     end
+    formatted_similar_recipes = similar_recipes.map do |recipe|
+      {
+        recipe_id: recipe["id"],
+        title: recipe["title"],
+        image_url: recipe["image"],
+        used_ingredients: recipe["usedIngredients"].map { |ingredient| ingredient["name"] }.uniq
+      }
+    end
+    
 
-    render json: {recipes: formatted_recipes, ingredient_names: ingredient_names }
+    render json: {recipes: formatted_recipes, ingredient_names: ingredient_names, similar_recipes: formatted_similar_recipes }
     
 
 

@@ -10,7 +10,7 @@ class IngredientsController < ApplicationController
   def create
     ingredients = current_user.ingredients
     ingredient = Ingredient.new(
-      name: params[:name],
+      name: params[:name].capitalize(),
       user_id: current_user.id,
       have: params[:have]
     )
@@ -27,14 +27,14 @@ class IngredientsController < ApplicationController
     ingredients = current_user.ingredients
     ingredient = Ingredient.find(params[:id])
     if ingredient.user_id == current_user.id
-      if params[:have] == "1"
+      if params[:have] == "true"
         ingredient.have = true
-      elsif params[:have] == "2"
+      elsif params[:have] == "false"
         ingredient.have = false
       end
-      if params[:cook_with] == "1"
+      if params[:cook_with] == "true"
         ingredient.cook_with = true
-      elsif params[:cook_with] == "2"
+      elsif params[:cook_with] == "false"
         ingredient.cook_with = false
       end
       # ingredient.have = !ingredient.have 
