@@ -41,7 +41,10 @@ class RecipesController < ApplicationController
     formatted_recipe = {
       recipe_id: recipe["id"],
       title: recipe["title"],
+      summary: recipe["summary"],
       prep_time: recipe["readyInMinutes"],
+      source: recipe["sourceName"],
+      source_url: recipe["sourceUrl"],
       servings: recipe["servings"],
       image: recipe["image"],
       ingredients: recipe["extendedIngredients"].map { |ingredient| ingredient["originalString"]},
