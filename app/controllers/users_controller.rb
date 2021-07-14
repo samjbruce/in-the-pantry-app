@@ -29,9 +29,13 @@ class UsersController < ApplicationController
     if current_user.id == user.id
       user.name = params[:name] || user.name
       user.email = params[:email] || user.email
+      if params[:password]
+        user.password = params[:password] || user.password
+        user.password_confirmation = params[:password_confirmation] || user.password_confirmation
+      end
       user.image_url = params[:image_url] || user.image_url
       if user.save
-        render json: user,
+        render json: {message: "Account successfully updated", user: user},
         status: :ok
       else
         render json: { errors: user.errors.full_messages },
