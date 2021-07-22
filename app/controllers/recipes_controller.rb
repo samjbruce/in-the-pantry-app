@@ -38,11 +38,20 @@ class RecipesController < ApplicationController
       instruction["steps"].map { |step| step["step"] }
     end
 
+    prep_time_minutes = recipe["readyInMinutes"]
+    if prep_time_minutes > 60
+      hours = prep_time_minutes / 60
+      minutes = prep_time_minutes % 60
+      prep_time_formatted = "#{hours} Hours and #{minutes} Minutes"
+    else
+      prep_time_formatted = "#{prep_time_minutes} Minutes"
+    end
+
     formatted_recipe = {
       recipe_id: recipe["id"],
       title: recipe["title"],
       summary: recipe["summary"],
-      prep_time: recipe["readyInMinutes"],
+      prep_time: prep_time_formatted,
       source: recipe["sourceName"],
       source_url: recipe["sourceUrl"],
       servings: recipe["servings"],
@@ -50,6 +59,22 @@ class RecipesController < ApplicationController
       ingredients: recipe["extendedIngredients"].map { |ingredient| ingredient["originalString"]},
       instructions: formatted_instructions[0]
     }
+    
+    similar_recipes = similar_recipes.map do |recipe|
+      prep_time_minutes = recipe["readyInMinutes"]
+      if prep_time_minutes > 60
+        hours = prep_time_minutes / 60
+        minutes = prep_time_minutes % 60
+        prep_time_formatted = "#{hours} Hours and #{minutes} Minutes"
+      else
+        prep_time_formatted = "#{prep_time_minutes} Minutes"
+      end
+      {
+        title: recipe["title"],
+        prep_time: prep_time_formatted
+      }
+    end
+
     render json: {formatted_recipe: formatted_recipe, similar_recipes: similar_recipes}
 
   end
