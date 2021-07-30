@@ -1,0 +1,42 @@
+/* ====== TABLE OF CONTENT ======= */
+/**
+ * LAYOUT
+ *
+ * BASE ON BOOTSTRAP
+ * - NORMALIZE
+ * - GRID SYSTEM
+ * - TYPOGRAPHY
+ * - CODE 
+ * - TABLE
+ * - FORM
+ * - BUTTON
+ * - IMAGE
+ * - HELPER CLASSES
+ *
+ * MODULES
+ * - HEADER
+ * - MENU NAVIGATIONS
+ * - HOMEPAGE
+ * - MAIN CONTENT
+ * - FONT AWESOME
+ * - ANIMATE CSS
+ * - OWLCAROUSEL
+ * - RESPONSIVE UTILITIES
+ *
+ */
+@import "bootstrap-variables";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "partials/mixins";
+
+// PARTIAL PART
+@import "partials/header";
+@import "partials/menu";
+@import "partials/homepage";
+@import "partials/main";
+@import "partials/blog";
+@import "partials/elements";
+@import "partials/font-awesome";
+@import "partials/owlcarousel";
+@import "partials/datepicker";
+@import "partials/animate";
+@import "partials/responsive";

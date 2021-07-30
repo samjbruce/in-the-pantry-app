@@ -19,4 +19,7 @@ Rails.application.routes.draw do
   get "/recipes" => "recipes#index"
   get "/recipes/:spoonacular_api_id" => "recipes#show"
 
+  get "/\*path" => proc { [200, {}, [ActionView::Base.new.render(file: 'public/index.html')]] }
+
+
 end

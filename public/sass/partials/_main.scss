@@ -1,0 +1,598 @@
+body {
+	line-height: 1.8;
+}
+// RECIPE CONTENT
+.recipe-thumb {
+	position: relative;
+	overflow: hidden;
+	img {
+		width: 100%;
+		display: block;
+	}
+	.view-recipe {
+		display: block;
+		background-color: rgba(227,61,38,0.8);
+		color:#fff;
+		font-weight: 700;
+		font-size: 12px;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		text-align: center;
+		padding: 18px 0;
+		@include transition(all 0.2s ease-in-out);
+		position: absolute;
+		bottom: -50px;
+		width: 100%;
+		opacity: 0;
+	}
+	&:hover .view-recipe {
+		bottom: 0;
+		opacity: 1;
+	}
+}
+
+.recipe-desc {
+	background-color: #232323;
+	color:#fff;
+	padding: 20px;
+	margin-bottom: 30px;
+	.recipe-title {
+		font-size: 18px;
+		font-weight: 400;
+		margin-top: 0;
+		width: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	a {
+		color:#fff;
+	}
+	p {
+		color:#999;
+		font-size: 12px;
+	}
+	span {
+		font-size: 10px;
+	}
+	p, span {
+		font-family: $font-family-serif;
+	}
+}
+
+.bookmarker {
+	background-color: $main-color;
+	color:#fff;
+	padding: 3px 10px;
+	border-radius:50%;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	&:hover {
+		background-color: #232323;
+		color:#fff;
+	}
+}
+// MY ACCOUNT PAGE
+.profile-details {
+	background-color: #fff2cf;
+	color: #666666;
+	text-align: center;
+	padding: 50px;
+}
+
+.profile-ava {
+	border-radius: 50%;
+	overflow: hidden;
+	width: 80px;
+	height: 80px;
+	margin: 0 auto 15px;
+}
+
+.profile-name {
+	h3 {
+		font-size: 14px;
+		font-weight: 700;
+		color: #232323;
+		text-transform: uppercase;
+	}
+}
+
+.profile-socmed {
+	a {
+		margin: 0 10px;
+	}
+}
+
+.my-content {
+	margin: 30px 0;
+	.nav-tabs {
+		.nav-item {
+			.nav-link {
+				text-transform: uppercase;
+				font-size: 12px;
+				letter-spacing: 1px;
+			}
+		}
+	}
+}
+
+.article-list {
+	border-bottom: 1px dotted #ddd;
+	padding: 20px 0 10px;
+	.cat-list {
+		font-family: $font-family-sans-serif;
+		font-weight: 700;
+		text-transform: uppercase;
+		font-size: 12px;
+		margin-bottom: 0;
+	}
+	img {
+		width: 100%;
+	}
+	h3 {
+		font-weight: 700;
+	}
+	a {
+		color: #232323;
+		&:hover {
+			color: $primary;
+		}
+		&.readmore {
+			color: $primary;
+			&:hover {
+				border-bottom: 1px dotted $primary;
+			}
+		}
+	}
+}
+
+.archive-title {
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 24px;
+	border-bottom: 2px solid #232323;
+	padding-bottom: 20px;
+}
+
+// RECIPE INDEX
+.recipe-index {
+	.card {
+		border: none;
+	}
+}
+
+.index-box {
+	border: 1px solid #232323;
+	margin-bottom: 10px;
+}
+
+.index-head {
+	background-color: #232323;
+	color: #fff;
+	padding: 10px 0;
+	text-align: center;
+	h3 {
+		font-weight: 700;
+		font-size: 36px;
+	}
+}
+
+.index-list {
+	padding: 20px;
+	ul {
+		padding: 0;
+		margin: 0;
+		list-style-type: none;
+	}
+	li {
+		border-bottom: 1px dotted #232323;
+		padding: 8px 0;
+		overflow: hidden;
+		&:first-child {
+			padding-top: 0;
+		}
+		&:last-child {
+			border-bottom: none;
+			padding-bottom: 0;
+		}
+		a {
+			float: left;
+		}
+		span {
+			float: right;
+		}
+	}
+}
+
+// SUBMIT RECIPE
+.submit-recipe {
+	h3, label {
+		font-weight: 700;
+	}
+	small {
+		font-family: $font-family-serif;
+		font-style: italic;
+	}
+
+	header {
+		padding: 15px 0;
+		border-bottom: 1px solid #ddd;
+	}
+
+	form {
+		padding-top: 30px;
+		border-top: 3px solid #f6f6f6;
+	}
+
+	.form-control-file {
+		padding: 3px;
+		border: 1px solid #ddd;
+	}
+}
+
+.nutrition-box {
+	.inner {
+		background-color: #f4f4f4;
+		border: 1px solid #ddd;
+		padding: 20px;
+		margin: 30px 0;
+		h3 {
+			font-weight: 700;
+			font-size: 18px;
+			text-transform: uppercase;
+			margin-bottom: 35px;
+			text-align: center;
+		}
+	}
+}
+
+// FAQ
+
+.faq-content {
+	h3 {
+		font-size: 18px;
+		font-weight: 700;
+	}
+	span {
+		background-color: $primary;
+	    color: #fff;
+	    border-radius: 50%;
+	    height: 40px;
+	    width: 40px;
+	    display: block;
+	    text-align: center;
+	    padding: 8px;
+	    margin-bottom: 20px;
+	}
+
+	.card-header {
+		padding: 5px;
+	}
+
+	.card {
+		margin-bottom: 10px;
+	}
+
+	p, .card-body {
+		font-family: $font-family-serif;
+	}
+}
+
+// LOGIN
+.acc-box {
+	padding: 50px;
+	border: 1px solid #ddd;
+	margin-bottom: 20px;
+	.form-check {
+		margin-bottom: 15px;
+	}
+	p {
+		font-family: $font-family-serif;
+		color: #999;
+	}
+	label {
+		font-weight: 700;
+	}
+}
+
+// CONTACT PAGE
+.gmap {
+	position: relative;
+    padding-bottom: 34.2rem;
+    height: 0;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-right: none;
+    iframe {
+    	position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    border: 1px solid #fff;
+    }
+}
+
+.contact-form {
+	padding: 50px;
+	border: 1px solid #ddd;
+	text-align: center;
+	h3 {
+		font-size: 18px;
+		text-transform: uppercase;
+		font-weight: 700;
+		letter-spacing: 1px;
+	}
+	p {
+		font-size: 14px;
+		color: #999999;
+		margin-bottom: 40px;
+	}
+	form {
+		margin-top: 20px;
+		text-align: left;
+		font-family: $font-family-serif;
+		label {
+			
+		}
+	}
+	.form-control {
+		font-size: 14px;
+		padding: 20px 10px;
+		border-radius: 0;
+	}
+	.form-button {
+		margin-top: 20px;
+		text-align: center;
+	}
+}
+
+.footer-social {
+	@include clearfix;
+	padding: 30px 0;
+	background-color: #e6e7e3;
+	text-align: center;
+	a {
+		margin: 0 25px;
+		color:#999999;
+		font-size: 11px;
+		text-transform: uppercase;
+		font-weight: 700;
+		letter-spacing: 1px;
+		&:hover {
+			color:$main-color;
+		}
+	}
+	i {
+		margin-right: 5px;
+	}
+}
+
+.bottom {
+	background: $main-color url("../images/content/pattern-bg.png");
+	color:#fff;
+	.widget {
+		text-align: center;
+		p {
+			font-family: $font-family-serif;
+			font-size: 15px;
+			line-height: 1.8;
+			opacity: 0.8;
+		}
+	}
+	.widget-title {
+		font-weight: 700;
+		text-transform: uppercase;
+		font-size: 24px;
+		letter-spacing: 4px;
+	}
+	.widget-inner {
+		padding:60px 70px;
+	}
+	.widget-about .widget-inner {
+		border-bottom: 1px solid rgba(255,255,255,0.3);
+	}
+	.widget-subscribe {
+		span {
+			font-family: $font-family-serif;
+			font-size: 14px;
+		}
+	}
+	.subscribe-form {
+		margin-top: 15px;
+		input {
+			border: 0;
+			padding:12px 15px;
+			font-family: $font-family-serif;
+		}
+		input[type="email"] {
+			color:#333;
+			width: 100%;
+			margin-bottom: 10px;
+			text-align: center;
+			font-size: 14px;
+			padding: 10px;
+			min-width: 250px;
+		}
+		input[type="submit"] {
+			background-color: #671c0d;
+			width: 100%;
+			color: #fff;
+			font-family: "Raleway", sans-serif;
+			font-weight: 700;
+			text-transform: uppercase;
+			font-size: 11px;
+			letter-spacing: 1px;
+			&:hover {
+				background-color: #000;
+			}
+		}
+	}
+}
+
+.footer-instagram {
+	position: relative;
+	margin-top: 60px;
+	.ig-btn {
+		position: absolute;
+		width: 100%;
+		top:150px;
+		text-align: center;
+	}
+	.ig-follow {
+		color:#fff;
+		font-size: 11px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		background-color: rgba(227,61,38,0.9);
+		padding: 17px 40px;
+		&:hover {
+			background-color: rgba(0,0,0,0.9);
+		}
+	}
+}
+
+.ig-feed {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	li {
+		width: 33.3%;
+		display: inline-block;
+		float: left;
+		img {
+			width: 100%;
+			height: auto;
+			vertical-align: middle;
+		}
+	}
+}
+
+.copy,
+.bottom-nav {
+	@include clearfix;
+	border-top: 1px solid rgba(255,255,255,0.3);
+	padding: 30px 0;
+	font-size: 12px;
+	text-align: center;
+}
+
+.bottom-nav {
+	padding-right: 0;
+	padding-left: 0;
+	margin: 0;
+	list-style: none;
+	li {
+		display: inline-block;
+		margin-right: 15px;
+		&:last-child {
+			margin-right: 0;
+		}
+		a {
+			color:#fff;
+			&:hover {
+				border-bottom: 1px dotted #fff;
+			}
+		}
+	}
+}
+
+.pagination-container {
+	width: 100%;
+	margin-top: 30px;
+}
+
+
+// ABOUT PAGE
+
+.about-desc {
+	padding: 40px 0 60px;
+}
+
+.team-col {
+	text-align: center;
+	border: 1px solid #ddd;
+	margin: 15px 0;
+	padding: 40px;
+	&:hover {
+		border-color: #e33d26;
+		box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.1);
+	}
+	figure {
+		margin: 10px 0;
+		img {
+			border-radius:50%;
+		}
+	}
+}
+
+.team-name {
+	font-weight: 700;
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+
+.team-tag {
+	font-size: 9px;
+	text-transform: uppercase;
+	color:#999;
+	margin-bottom: 30px;
+	display: block;
+}
+.team-media {
+	margin-top: 30px;
+	a {
+		font-size: 18px;
+		margin: 0 10px;
+		color:#ccc;
+		&:hover {
+			color:#e33d26;
+		}
+	}
+}
+
+@media (min-width: 992px) {
+
+	.nutrition-box .inner {
+		padding: 50px;
+	}
+
+	.ig-feed {
+		li {
+			width: 16.66%;
+		}
+	}
+	.footer-instagram .ig-btn {
+		top: 90px;
+	}
+
+	.bottom {
+		margin-bottom: -20px;
+	}
+
+	.bottom .subscribe-form input[type="email"] {
+		text-align: left;
+		margin-bottom: 0;
+	}
+
+	.bottom .subscribe-form input[type="email"],
+	.bottom .subscribe-form input[type="submit"] {
+		width: auto;
+	}
+
+	.bottom .widget-about .widget-inner {
+		border-right: 1px solid rgba(255, 255, 255, 0.3);
+		border-bottom: 0;
+	}
+
+	.copy {
+		text-align: left;
+	}
+
+	.bottom-nav {
+		text-align: right;
+	}
+}

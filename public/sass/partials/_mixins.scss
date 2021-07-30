@@ -1,0 +1,14 @@
+// Alerts
+
+@mixin clearfix {
+  clear: both;
+  &:before {
+  	content: "";
+  	display: table;
+  }
+  &:after {
+  	content: "";
+  	display: table;
+  	clear: both;
+  }
+}
